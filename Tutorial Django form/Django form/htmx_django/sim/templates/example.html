@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+</head>
+<body>
+
+<h2>Contact Us</h2>
+
+<form 
+    hx-post="{% url 'sample-post' %}" 
+    hx-target="#message"
+    hx-swap="innerHTML"
+>
+    {% csrf_token %}
+
+    <p>
+        {{ form.name.label_tag }}<br>
+        {{ form.name }}
+    </p>
+
+    <p>
+        {{ form.surname.label_tag }}<br>
+        {{ form.surname }}
+    </p>
+
+    <p>
+        {{ form.email.label_tag }}<br>
+        {{ form.email }}
+    </p>
+
+    <p>
+        {{ form.phone.label_tag }}<br>
+        {{ form.phone }}
+    </p>
+
+    <p>
+        {{ form.message.label_tag }}<br>
+        {{ form.message }}
+    </p>
+
+    <button type="submit">Send Message</button>
+</form>
+
+<div id="message"></div>
+
+</body>
+</html>
+
